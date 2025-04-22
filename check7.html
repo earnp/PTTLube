@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Authenticity Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #2196f3, #e3f2fd);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #1565c0;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    input {
+      padding: 12px;
+      width: 100%;
+      border: 2px solid #90caf9;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #1565c0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0d47a1;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="PTT.png.png" alt="PTT Lubricants Logo" class="logo">
+    <h1>🔍 Check Product Authenticity</h1>
+    <input type="text" id="codeInput" placeholder="Enter product code...">
+    <button onclick="checkCode()">Check</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const validCodes = {
+      "ABC123XYZ": "PTT Lubricants from Thailand",
+      "DEF456LMN": "Product B",
+      "JKL789QWE": "Product C"
+    };
+
+    function checkCode() {
+      const code = document.getElementById("codeInput").value.trim().toUpperCase();
+      const result = document.getElementById("result");
+
+      if (!code) {
+        result.innerHTML = "⚠️ Please enter a product code.";
+        result.style.color = "#ff9800";
+        return;
+      }
+
+      if (validCodes[code]) {
+        result.innerHTML = `✅ Authentic Product: ${validCodes[code]}`;
+        result.style.color = "#2e7d32";
+      } else {
+        result.innerHTML = "❌ Code not found. This might be a counterfeit product.";
+        result.style.color = "#c62828";
+      }
+    }
+  </script>
+</body>
+</html>
